@@ -160,6 +160,7 @@ const OverLay = styled.div`
 const BottomBar = styled.footer`
   background-color: black;
   color: white;
-  height: 10vh; 
+  height: 10vh;
 `;
 
+// asdf
