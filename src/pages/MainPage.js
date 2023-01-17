@@ -163,9 +163,3 @@ const BottomBar = styled.footer`
   height: 10vh; 
 `;
 
-//styled-components, styled-reset, react-slick carousel  background-image: url("https://i.ibb.co/tZrv2Tw/Seoul-South-Korea-3750-x-2109-Imgur.jpg"); https://react-slick.neostack.com/docs/example/simple-slider
-/*
-style = {{
-  'backgroundImage': `url(${mainPagePhoto})`,
-}}
-*/
