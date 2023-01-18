@@ -9,6 +9,9 @@ import mainPagePhoto1 from "../img/Seoul_mainPage1.jpg";
 import mainPagePhoto2 from "../img/Seoul_mainPage2.jpg";
 import mainPagePhoto3 from "../img/Seoul_mainPage3.jpg";
 
+import left_arrow from "../img/left_arrow.png";
+import right_arrow from "../img/right_arrow.png";
+
 function MainPage() {
   
   const sliderSettings = {
@@ -16,13 +19,16 @@ function MainPage() {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1, 
+    slidesToScroll: 1,
+    arrows: true, 
+    autoplay: true,
+    autoplaySpeed: 4000
   };
 
   return (
     <MainPageWrapper>
       <TopBar>
-        <h1>Logo design</h1>
+        <h1>월플</h1>
         <ul>
           <li><button>로그인</button></li>
           <li><button>회원 가입</button></li>
@@ -77,7 +83,9 @@ const TopBar = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  h1{
+  h1{ 
+    font-size: 1.8em;
+    font-weight: bold;
     padding: 30px;
   }
 
@@ -87,11 +95,10 @@ const TopBar = styled.header`
     li {
       margin: 15px;
       button{
-        width: 140px;
-        height: 60px;
+        width: 6em;
+        height: 2em;
         font-size: 1.3em;
-        border-radius: 30px;
-
+        border-radius: 2em;
       }
     }
   }
@@ -102,8 +109,31 @@ const SliderBar = styled.div`
 `;
 
 const StyledSlider = styled(Slider)`
+  .slick-arrow{
+    z-index: 10000;
+  }
+
+
+  .slick-prev{
+    left: 30px;
+
+  }
+
+  .slick-next{
+    right: 30px; 
+  }
+
+  .slick-prev:before{
+    content: url(${left_arrow});
+    font-size: 20px;
+  }
+
+  .slick-next:before{
+    content: url(${right_arrow});
+  }
+
   .slick-dots{
-    bottom: -5rem;
+    bottom: -6rem;
   }
 
   .slick-dots li{
@@ -134,15 +164,15 @@ const SliderComponent = styled.div`
   position: relative;
 
   h1{
-
+    font-weight: bold;
     font-size: 3rem;
-    padding: 1rem;
+    padding: 2rem;
     margin-bottom: 1rem;
   }
 
   p{
     font-size: 1.2rem;
-    padding: 1rem;
+    padding: 2rem;
   }
 `;
 
