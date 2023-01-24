@@ -12,7 +12,12 @@ import mainPagePhoto3 from "../img/Seoul_mainPage3.jpg";
 import left_arrow from "../img/left_arrow.png";
 import right_arrow from "../img/right_arrow.png";
 
+import { useNavigate } from 'react-router';
+
+
 function MainPage() {
+
+  let navigate = useNavigate();
   
   const sliderSettings = {
     dots: true,
@@ -30,8 +35,8 @@ function MainPage() {
       <TopBar>
         <h1>월플</h1>
         <ul>
-          <li><button>로그인</button></li>
-          <li><button>회원 가입</button></li>
+          <li><button onClick = {() => {navigate('/login')}}>로그인</button></li>
+          <li><button onClick = {() => {navigate('/signup')}}>회원 가입</button></li>
         </ul> 
       </TopBar>
       <SliderBar>
