@@ -1,11 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 import Bg from '../img/seoul.jpeg';
 import recaptcha from '../img/recaptcha.gif'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// let [fade, setFade] = useState('');
 
 let Upperbar = styled.div`
     width : 100%;
@@ -268,7 +266,9 @@ function SignupPage(){
     return (
         <div>
             <Upperbar>
-                <Upperbardiv><h1>Logo Design</h1></Upperbardiv>
+                <Upperbardiv onClick={()=>{
+                    navigate('/')
+                }}><h1>Logo Design</h1></Upperbardiv>
                 <Flexgrow></Flexgrow>
                 <Upperbardiv onClick={()=>{
                     navigate('/Login')

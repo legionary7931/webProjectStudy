@@ -4,7 +4,7 @@ import GlobalStyle from './utils/GlobalStyleReset';
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import FindIDPage from './pages/FindIDPage';
-import SignupPage from './pages/FindIDPage';
+import SignupPage from './pages/SignupPage';
 
 function App() {
   return (
