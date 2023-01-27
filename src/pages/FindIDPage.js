@@ -147,7 +147,7 @@ let PhoneBtn = styled.button`
     border : 0.7px solid white;
     font-size : 5px;
     float : right;
-    position : absolute;
+    position : relative;
     margin-top : 30px;
     border-radius : 5px;
     color : white;

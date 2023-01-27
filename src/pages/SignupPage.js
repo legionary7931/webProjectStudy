@@ -44,7 +44,7 @@ let Signupdiv = styled.div`
     margin : auto;
     position : absolute;
     left : 50%;
-    top : 50%;
+    top : 45%;
     transform:translate(-50%,-50%);
     background-color : transparent;
     color : white;
@@ -58,7 +58,7 @@ let Signupdiv = styled.div`
     }
   `
   let Signupdiv2 = styled.div`
-    width : auto;
+    width : 90%;
     height : auto;
     margin : auto;
     position : absolute;
@@ -112,7 +112,7 @@ let Wrapper = styled.div`
     margin : 1;
     position : absolute;
     left : 50%;
-    top : 90%;
+    top : 95%;
     transform:translate(-50%,-90%);
     p {
         margin-bottom : 0; 
@@ -212,7 +212,7 @@ let PhoneBtn = styled.button`
     border : 0.7px solid white;
     font-size : 5px;
     float : right;
-    position : absolute;
+    position : relative;
     margin-top : 30px;
     border-radius : 5px;
     color : white;
@@ -314,6 +314,7 @@ function SignupDiv(props){
                         <InputBox><p className='inputId'>이메일</p></InputBox>
                         <Input placeholder='E-mail' type={"email"}></Input>
                 </Wrapper>
+
                 <Wrapper>
                     <InputBox><p className='inputId'>아이디</p></InputBox>
                     <Input placeholder='ID'></Input>
@@ -325,7 +326,8 @@ function SignupDiv(props){
                     <Input placeholder='Confirm Passwords' type={"password"}></Input>
                 </Wrapper>
             </Container>
-        <Recaptcha></Recaptcha>
+            <Recaptcha></Recaptcha>
+
         </Signupdiv>
         
     ) 
