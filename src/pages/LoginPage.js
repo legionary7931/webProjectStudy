@@ -21,6 +21,9 @@ let Upperbardiv = styled.div`
     color : white;
     margin : auto;
     margin-right : 50px;
+    h3 {
+        font-size : 18px;
+    }
 `
 let Flexgrow = styled.div`
     flex-grow : 1;
@@ -39,9 +42,17 @@ let Background = styled.div`
     position : absolute;
     left : 50%;
     top : 50%;
-    background-color : transparent;
     transform:translate(-50%,-50%);
+    background-color : transparent;
     color : white;
+    display : flex;
+    flex-direction : column; /* 세로정렬 */
+    justify-content : center;  /* 좌우정렬 */
+    h3 {
+        margin-top : 20px;
+        margin-bottom : 20px;
+        letter-spacing : 3px;
+    }
   `
   let LoginBtn = styled.button`
     width : 250px;
@@ -56,6 +67,7 @@ let Background = styled.div`
     margin-bottom : 10px;
     font-weight:500;
     transform : scale(0.96);
+    margin : auto;
     p {
         margin-bottom : 0;
     }
@@ -112,19 +124,21 @@ function LoginPage(){
     return (
         <div>
             <Upperbar>
-                <Upperbardiv><h1>Logo Design</h1></Upperbardiv>
+                <Upperbardiv onClick={()=>{
+                    navigate('/')
+                }}><h1>Logo Design</h1></Upperbardiv>
                 <Flexgrow></Flexgrow>
                 <Upperbardiv onClick={()=>{
                     navigate('/login')
-                }}><h3 style={{fontSize :'18px'}}>로그인</h3></Upperbardiv>
+                }}><h3>로그인</h3></Upperbardiv>
                 <Upperbardiv onClick={()=>{
                     navigate('/signup')
-                }}><h3 style={{fontSize :'18px'}}>회원가입</h3></Upperbardiv>
+                }}><h3>회원가입</h3></Upperbardiv>
             </Upperbar>
             {/* <Backgroundcover> */}
             <Background>
                 <LoginDiv>
-                    <h3 style={{marginTop : '20px', marginBottom : '20px', letterSpacing : '3px'}}>LOGO DESIGN</h3>
+                    <h3 style={{margin : 'auto'}}>LOGO DESIGN</h3>
                     <Wrapper>
                         <form action="~~">
                             <InputBox><p className='inputId'>아이디</p></InputBox>
@@ -134,6 +148,7 @@ function LoginPage(){
                             <Input placeholder='Passwords' type={"password"}></Input>
                         </form>
                     </Wrapper>
+                    
                     <LoginBtn onClick={()=>{
                     navigate('.././')
                 }}>로그인</LoginBtn>

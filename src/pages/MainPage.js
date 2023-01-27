@@ -33,7 +33,7 @@ function MainPage() {
   return (
     <MainPageWrapper>
       <TopBar>
-        <h1>월플</h1>
+        <h1 onClick = {() => {navigate('/')}}>월플</h1>
         <ul>
           <li><button onClick = {() => {navigate('/login')}}>로그인</button></li>
           <li><button onClick = {() => {navigate('/signup')}}>회원 가입</button></li>
