@@ -5,6 +5,8 @@ import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import FindIDPage from './pages/FindIDPage';
 import SignupPage from './pages/SignupPage';
+import UserProfile from './pages/UserProfile';
+import Modify from './pages/Modify.js'
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/findID" element={<FindIDPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
+        <Route path="/userprofile" element={<UserProfile/>}></Route>
+        <Route path="/modify" element={ <Modify></Modify> } />
+        <Route path="/myposting" element={ <div>내 게시물</div> } />
       </Routes>
     </div>
   )
@@ -22,4 +27,3 @@ function App() {
 
 export default App;
 
-//installed: styled-components, styled-reset, react-router-dom
