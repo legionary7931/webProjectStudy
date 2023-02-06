@@ -73,6 +73,7 @@ function SignupPage(){
                             return (
                                 <KategorieBtn 
                                 id={i}
+                                key={i}
                                 onClick={(e)=>{                 
                                     e.target.classList.toggle('active');
                                     console.log(e.target.classList);

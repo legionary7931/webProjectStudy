@@ -7,6 +7,8 @@ import FindIDPage from './pages/FindIDPage';
 import SignupPage from './pages/SignupPage';
 import UserProfile from './pages/UserProfile';
 import Modify from './pages/Modify.js'
+import LandingPage from './pages/LandingPage';
+import MapContainer from './pages/MapContainer';
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path="/userprofile" element={<UserProfile/>}></Route>
         <Route path="/modify" element={ <Modify></Modify> } />
         <Route path="/myposting" element={ <div>내 게시물</div> } />
+
       </Routes>
     </div>
   )
