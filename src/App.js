@@ -7,8 +7,6 @@ import FindIDPage from './pages/FindIDPage';
 import SignupPage from './pages/SignupPage';
 import UserProfile from './pages/UserProfile';
 import Modify from './pages/Modify.js'
-import LandingPage from './pages/LandingPage';
-import MapContainer from './pages/MapContainer';
 
 function App() {
   return (
