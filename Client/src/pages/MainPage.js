@@ -35,8 +35,8 @@ function MainPage() {
       <TopBar>
         <h1 onClick = {() => {navigate('/')}}>월플</h1>
         <ul>
-          <li><button onClick = {() => {navigate('/login')}}>로그인</button></li>
-          <li><button onClick = {() => {navigate('/signup')}}>회원 가입</button></li>
+          <li><h3 style = {{fontSize: '18px'}} onClick = {() => {navigate('/login')}}>로그인</h3></li>
+          <li><h3 style = {{fontSize: '18px'}} onClick = {() => {navigate('/signup')}}>회원 가입</h3></li>
         </ul> 
       </TopBar>
       <SliderBar>

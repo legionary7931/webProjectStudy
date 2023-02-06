@@ -72,7 +72,7 @@ let Background = styled.div`
     padding: 40px;
     display : flex;
 `
-let UserBox = styled.div`
+let InputBox = styled.div`
     width : 200px;
     height: auto;
     text-align : left;
@@ -141,25 +141,26 @@ function UserProfile(){
     <Background>
         <Sidebar>
             <MenuTab onClick={()=>{navigate('/userprofile')}}>내 정보</MenuTab>
-            <MenuTab onClick={()=>{navigate('/modify')}}>정보 변경하기</MenuTab>
+            <MenuTab>영수증</MenuTab>
+            <MenuTab onClick={()=>{navigate('/modify')}}>비밀번호 변경하기</MenuTab>
             <MenuTab onClick={()=>{navigate('/myposting')}}>내 게시물</MenuTab>
         </Sidebar>
         <Rightbox>
         <Signupdiv>
                 <Container>
                     <Wrapper>
-                        <UserBox><p className='inputId'>이름</p></UserBox>
+                        <InputBox><p className='inputId'>이름</p></InputBox>
                         <UserInform>이재겸</UserInform>
-                        <UserBox><p className='inputId'>생년월일</p></UserBox>
+                        <InputBox><p className='inputId'>생년월일</p></InputBox>
                         <UserInform>971229</UserInform>
                         <InputDiv>
-                            <UserBox><p className='inputId'>전화번호</p>
-                            </UserBox>
+                            <InputBox><p className='inputId'>전화번호</p>
+                            </InputBox>
                             <UserInform>010-3967-5367</UserInform>
                         </InputDiv>
-                        <UserBox><p className='inputId'>이메일</p></UserBox>
+                        <InputBox><p className='inputId'>이메일</p></InputBox>
                         <UserInform>thfpdhk1@gmail.com</UserInform>
-                        <UserBox><p className='inputId'>닉네임</p></UserBox>
+                        <InputBox><p className='inputId'>닉네임</p></InputBox>
                         <UserInform>천둥집사</UserInform>
                     </Wrapper>
                 </Container>

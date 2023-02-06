@@ -20,7 +20,6 @@ function App() {
         <Route path="/userprofile" element={<UserProfile/>}></Route>
         <Route path="/modify" element={ <Modify></Modify> } />
         <Route path="/myposting" element={ <div>내 게시물</div> } />
-
       </Routes>
     </div>
   )
