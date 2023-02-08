@@ -14,12 +14,15 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 mongoose.set('strictQuery',true)
-mongoose.connect(dev.mongoURI,{dbName:"place"})
+mongoose.connect(dev.mongoURI, {dbName:"place"})
     .then(() => console.log('MongoDB Connected...'))
     .catch((err) => console.log(err))
-app.post('/register',(req,res) => {
+
+app.post('/signup', (req, res) => {
     const user = new User(req.body)
-    user.save((err,doc) => {
+    console.log(user)
+
+    user.save((err, doc) => {
         if(err) return res.json({success : false, err})
         return res.status(200).json({
             success : true
@@ -55,4 +58,4 @@ app.post('/login', (req, res) => {
 })
 
 
-app.listen(port,() => console.log('listening on port ${port}!'))
+app.listen(port, () => console.log("listening on port " + port))

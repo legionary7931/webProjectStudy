@@ -5,18 +5,27 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
-import { createStore } from 'redux';
-import reducer from './redux/reducer';
+import { applyMiddleware, createStore } from 'redux';
+import promiseMiddlerware from "redux-promise";
+import rootReducer from './redux/reducers/index';
+import reduxThunk from "redux-thunk"
 
 import { Provider } from 'react-redux';
 
-const store = createStore(reducer);
-
+const createStoreWithMiddleware = applyMiddleware(
+  promiseMiddlerware,
+  reduxThunk
+)(createStore);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <Provider store={store}>
+    <Provider store={createStoreWithMiddleware(
+      rootReducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__&&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    )   
+    }>
       <App />
     </Provider >
   </BrowserRouter>

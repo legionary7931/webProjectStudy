@@ -1,10 +1,11 @@
 // dispatch에 action객체를 만들어주는 action객체 생성기들
 
-import axios from "axios";
+import Axios from '../../utils/Axios'
 import * as types from './actionType';
 
+
 export function login(data) {
-  const request = axios.post('../../backend/server', data)
+  const request = Axios.post('/login', data)
                     .then(response => response.data)
   return {
     type: types.LOGIN,
@@ -13,8 +14,9 @@ export function login(data) {
 }
 
 export function signup(data){
-  const request = axios.post('../../backend/server', data)
+  const request = Axios.post('/signup', data)
                     .then(response => response.data)
+
   return {
     type: types.SIGNUP,
     payload: request

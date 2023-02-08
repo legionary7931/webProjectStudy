@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
     },
     nickname : {
         type : String,
-        requied : true,
+        required : true,
         unique : true
     },
     phonenumber : {
@@ -38,7 +38,7 @@ const userSchema = mongoose.Schema({
     },
     confirmpasswords : {
         type : String,
-        requried : true,
+        required : true,
     },
     token: {
         type: String
