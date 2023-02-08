@@ -120,7 +120,6 @@ let InputBox = styled.div`
 `
 function LoginPage(){
     let navigate = useNavigate()
-
     return (
         <div>
             <Upperbar>
@@ -135,7 +134,7 @@ function LoginPage(){
                     navigate('/signup')
                 }}><h3>회원가입</h3></Upperbardiv>
             </Upperbar>
-            {/* <Backgroundcover> */}
+
             <Background>
                 <LoginDiv>
                     <h3 style={{margin : 'auto'}}>LOGO DESIGN</h3>
@@ -148,13 +147,12 @@ function LoginPage(){
                             <Input placeholder='Passwords' type={"password"}></Input>
                         </form>
                     </Wrapper>
-                    
                     <LoginBtn onClick={()=>{
-                    navigate('.././')
-                }}>로그인</LoginBtn>
+                        navigate('.././')
+                        }}>로그인</LoginBtn>
                     <LoginBtn onClick={()=>{
-                    navigate('.././findID')
-                }}>비밀번호 찾기</LoginBtn>
+                        navigate('.././findID')
+                        }}>비밀번호 찾기</LoginBtn>
                 </LoginDiv>
             </Background>
             <Lowerbar></Lowerbar>
