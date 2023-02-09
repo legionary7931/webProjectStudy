@@ -141,8 +141,7 @@ function UserProfile(){
     <Background>
         <Sidebar>
             <MenuTab onClick={()=>{navigate('/userprofile')}}>내 정보</MenuTab>
-            <MenuTab>영수증</MenuTab>
-            <MenuTab onClick={()=>{navigate('/modify')}}>비밀번호 변경하기</MenuTab>
+            <MenuTab onClick={()=>{navigate('/modify')}}>정보 변경하기</MenuTab>
             <MenuTab onClick={()=>{navigate('/myposting')}}>내 게시물</MenuTab>
         </Sidebar>
         <Rightbox>
