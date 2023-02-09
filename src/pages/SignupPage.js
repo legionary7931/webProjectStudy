@@ -3,6 +3,7 @@ import Bg from '../img/seoul.jpeg';
 import recaptcha from '../img/recaptcha.gif'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 function SignupPage(){
     let navigate = useNavigate()
@@ -10,6 +11,11 @@ function SignupPage(){
     let [kategorie, setKategorie] = useState([
         '분위기 좋은 음식점', '소개팅 성공 98% 음식점', '숙성 소고기', '유튜버 추천 맛집', '가성비 와인바','I끼리 만날 때 가는 술집', '저렴한 칵테일', '데이트 할 때 가는 술집','겨울엔 대방어','여기에 붕어빵','서울에도 이런 포장마차 있지','대화하기 좋은 술집','이색 맛집','디저트가 맛있는 카페','신나고 싶을 때 가는 술집','빵순이 빵돌이 모여라','밖에서 맥주마시기 좋은 곳','카공하기 좋은 카페','여의도 점심식사','연희동 뜨는 맛집','차 한잔 하기 좋은 곳','대학생들이 편하게 가는 술집','망원동 라멘 맛집','에스프레소 먹고 싶을  때','이태원에서 꼭 가야 하는 곳','디카페인 카페' ,'연희동 맛집', '안암 맛집','신촌 맛집','홍대 맛집','연남동 핫플','성수동 핫플','건대 중국집','가지튀김 좋아하면 가야하는 곳','홍콩 음식점','딤섬 맛있는 곳','서울 꼭 가봐야 하는 만두'
     ])
+    const Captcha = () => {
+        function onChange(value) {
+          console.log('Captcha value:', value);
+        }}
+        
     return (
         <div>
             <Upperbar>
@@ -57,7 +63,12 @@ function SignupPage(){
                             <Input placeholder='Confirm Passwords' type={"password"}></Input>
                         </Wrapper>
                     </Container>
-                    <Recaptcha></Recaptcha>
+
+                    <ReCAPTCHA
+                        sitekey="6LdKpGYkAAAAADCI-HIRzoEU3wOlaJM-ptsGS1JI"
+                        onChange={Captcha}
+                    />
+
                     {
                     bgstate == false ?  <LoginBtn onClick={()=>{
                         setBgstate(true)
