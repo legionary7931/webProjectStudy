@@ -14,7 +14,7 @@ const userSchema = mongoose.Schema({
         unique:true
     },
     birthday : {
-        type : Number,
+        type : String,
         required : true
     },
     nickname : {
@@ -23,18 +23,18 @@ const userSchema = mongoose.Schema({
         unique : true
     },
     phonenumber : {
-        type : Number,
+        type : String,
+        required : true,
+        unique : true
+    },
+    email : {
+        type : String,
         required : true,
         unique : true
     },
     password : {
         type: String,
         required : true
-    },
-    email : {
-        type : String,
-        required : true,
-        unique : true
     },
     confirmpasswords : {
         type : String,
