@@ -11,6 +11,8 @@ function SignupPage(){
     let [kategorie, setKategorie] = useState([
         '분위기 좋은 음식점', '소개팅 성공 98% 음식점', '숙성 소고기', '유튜버 추천 맛집', '가성비 와인바','I끼리 만날 때 가는 술집', '저렴한 칵테일', '데이트 할 때 가는 술집','겨울엔 대방어','여기에 붕어빵','서울에도 이런 포장마차 있지','대화하기 좋은 술집','이색 맛집','디저트가 맛있는 카페','신나고 싶을 때 가는 술집','빵순이 빵돌이 모여라','밖에서 맥주마시기 좋은 곳','카공하기 좋은 카페','여의도 점심식사','연희동 뜨는 맛집','차 한잔 하기 좋은 곳','대학생들이 편하게 가는 술집','망원동 라멘 맛집','에스프레소 먹고 싶을  때','이태원에서 꼭 가야 하는 곳','디카페인 카페' ,'연희동 맛집', '안암 맛집','신촌 맛집','홍대 맛집','연남동 핫플','성수동 핫플','건대 중국집','가지튀김 좋아하면 가야하는 곳','홍콩 음식점','딤섬 맛있는 곳','서울 꼭 가봐야 하는 만두'
     ])
+    const [passwordValue1, setPasswordValue1] = useState("");
+    const [passwordValue2, setPasswordValue2] = useState("");
     const Captcha = () => {
         function onChange(value) {
           console.log('Captcha value:', value);
@@ -58,12 +60,24 @@ function SignupPage(){
                             <InputBox><p className='inputId'>닉네임</p></InputBox>
                             <Input placeholder='Nickname'></Input>
                             <InputBox><p className='inputPassword'>비밀번호</p></InputBox>
-                            <Input placeholder='Passwords' type={"password"}></Input>
-                            <InputBox><p className='inputPassword'>비밀번호 확인</p></InputBox>
-                            <Input placeholder='Confirm Passwords' type={"password"}></Input>
+                            <Input placeholder='Passwords' type={"password"} onChange={(e)=>{
+                                setPasswordValue1(e.target.value)
+                                console.log(passwordValue1)
+                                }}></Input>
+                            <InputDiv>
+                                <InputBox><p className='inputId'>비밀번호 확인</p>
+                                </InputBox>
+                                <InputPhone placeholder='Password Confirm' type={"password"} onChange={(e)=>{
+                                    setPasswordValue2(e.target.value)
+                                    console.log(passwordValue2)
+                                }}></InputPhone>
+                                {/* <PasswordBtnO>O</PasswordBtnO> */}
+                                {
+                                    passwordValue1 === passwordValue2 ? <PasswordBtnO>O</PasswordBtnO> : <PasswordBtnX>X</PasswordBtnX>
+                                }
+                            </InputDiv>
                         </Wrapper>
                     </Container>
-
                     <ReCAPTCHA
                         sitekey="6LdKpGYkAAAAADCI-HIRzoEU3wOlaJM-ptsGS1JI"
                         onChange={Captcha}
@@ -74,7 +88,7 @@ function SignupPage(){
                         setBgstate(true)
                     }}>카테고리 선택하기</LoginBtn> : null
                     }
-                   </Signupdiv>
+                    </Signupdiv>
                     </div> : 
                     <Signupdiv2>
                         <h3>좋아하는 카테고리를 선택해주세요</h3>
@@ -211,6 +225,7 @@ let Wrapper = styled.div`
   font-weight:500;
   transform : scale(0.96);
   margin : 1;
+  margin-top : 20px;
   p {
       margin-bottom : 0; 
   }
@@ -279,7 +294,7 @@ let Wrapper = styled.div`
 `
 let InputDiv = styled.div`
     width : 200px;
-    height : 68px;
+    height : 63px;
 `
 let InputPhone = styled.input`
     background-color: transparent;
@@ -318,6 +333,34 @@ let PhoneBtn = styled.button`
         color : #646464;
         border : 0.7px solid #646464;
     }
+    `
+let PasswordBtnO = styled.button`
+    width : 30px;
+    height : 20px;
+    padding : 0px;
+    background : transparent;
+    border : 0.7px solid green;
+    font-size : 5px;
+    float : right;
+    position : relative;
+    margin-top : 30px;
+    border-radius : 5px;
+    color : green;
+    transition : all 0.5s;
+    `
+let PasswordBtnX = styled.button`
+    width : 30px;
+    height : 20px;
+    padding : 0px;
+    background : transparent;
+    border : 0.7px solid red;
+    font-size : 5px;
+    float : right;
+    position : relative;
+    margin-top : 30px;
+    border-radius : 5px;
+    color : red;
+    transition : all 0.5s;
     `
 let InputBox = styled.div`
     width : 200px;
