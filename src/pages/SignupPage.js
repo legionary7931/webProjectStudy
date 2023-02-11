@@ -71,9 +71,9 @@ function SignupPage(){
                                     setPasswordValue2(e.target.value)
                                     console.log(passwordValue2)
                                 }}></InputPhone>
-                                {/* <PasswordBtnO>O</PasswordBtnO> */}
                                 {
-                                    passwordValue1 === passwordValue2 ? <PasswordBtnO>O</PasswordBtnO> : <PasswordBtnX>X</PasswordBtnX>
+                                    passwordValue1 !== passwordValue2 || passwordValue1 === "" ? 
+                                    <PasswordBtnX>X</PasswordBtnX> :  <PasswordBtnO>O</PasswordBtnO>
                                 }
                             </InputDiv>
                         </Wrapper>
