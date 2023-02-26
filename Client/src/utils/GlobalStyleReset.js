@@ -60,6 +60,10 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
   }
 
+  .grecaptcha-badge {
+    visibility: hidden;
+  }
+
 
 `;
 
