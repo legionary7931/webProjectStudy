@@ -1,6 +1,82 @@
 import styled from 'styled-components';
 import Bg from '../img/Seoul_mainPage0.jpg';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '../redux/actions/actionCreator'
+
+function LoginPage(props){
+    let navigate = useNavigate()
+
+    const [ID, setID] = useState("");
+    const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
+
+    const onIDHandler = (e) =>{
+        setID(e.target.value);
+    }
+
+    const onPasswordHandler = (e) =>{
+        setPassword(e.target.value);
+    }
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault(); 
+
+        let body = {
+            id: ID,
+            password: password
+        }
+
+        dispatch(login(body))
+        .then(response => {
+            if(response.payload.loginSuccess){
+                alert("로그인에 성공했습니다.")
+                props.history.push('/');
+            } else {
+                alert("로그인에 실패했습니다. 아이디와 비밀번호를 다시 확인해주세요.");
+            }
+        })
+    }
+
+    return (
+        <div>
+            <Upperbar>
+                <Upperbardiv onClick={()=>{
+                    navigate('/')
+                }}><h1>Logo Design</h1></Upperbardiv>
+                <Flexgrow></Flexgrow>
+                <Upperbardiv onClick={()=>{
+                    navigate('/login')
+                }}><h3>로그인</h3></Upperbardiv>
+                <Upperbardiv onClick={()=>{
+                    navigate('/signup')
+                }}><h3>회원가입</h3></Upperbardiv>
+            </Upperbar>
+            {/* <Backgroundcover> */}
+            <Background>
+                <LoginDiv>
+                    <h3 style={{margin : 'auto'}}>LOGO DESIGN</h3>
+                    <Wrapper>
+                        <form action="~~">
+                            <InputBox><p className='inputId'>아이디</p></InputBox>
+                            <Input placeholder='ID' value={ID} onChange={onIDHandler}></Input>
+                            <p></p>
+                            <InputBox><p className='inputPassword'>비밀번호</p></InputBox>
+                            <Input placeholder='Passwords' type={"password"} value={password} onChange={onPasswordHandler}></Input>
+                        </form>
+                    </Wrapper>
+                    
+                    <LoginBtn onClick={onSubmitHandler}>로그인</LoginBtn>
+                    <LoginBtn onClick={()=>{navigate('.././findID')}}>비밀번호 찾기</LoginBtn>
+                </LoginDiv>
+            </Background>
+            <Lowerbar></Lowerbar>
+        </div>
+    )
+}
+
+export default LoginPage;
 
 let Upperbar = styled.div`
     width : 100%;
@@ -118,48 +194,3 @@ let InputBox = styled.div`
     text-align : left;
     transition : all 0.5s;
 `
-function LoginPage(){
-    let navigate = useNavigate()
-
-    return (
-        <div>
-            <Upperbar>
-                <Upperbardiv onClick={()=>{
-                    navigate('/')
-                }}><h1>Logo Design</h1></Upperbardiv>
-                <Flexgrow></Flexgrow>
-                <Upperbardiv onClick={()=>{
-                    navigate('/login')
-                }}><h3>로그인</h3></Upperbardiv>
-                <Upperbardiv onClick={()=>{
-                    navigate('/signup')
-                }}><h3>회원가입</h3></Upperbardiv>
-            </Upperbar>
-            {/* <Backgroundcover> */}
-            <Background>
-                <LoginDiv>
-                    <h3 style={{margin : 'auto'}}>LOGO DESIGN</h3>
-                    <Wrapper>
-                        <form action="~~">
-                            <InputBox><p className='inputId'>아이디</p></InputBox>
-                            <Input placeholder='ID'></Input>
-                            <p></p>
-                            <InputBox><p className='inputPassword'>비밀번호</p></InputBox>
-                            <Input placeholder='Passwords' type={"password"}></Input>
-                        </form>
-                    </Wrapper>
-                    
-                    <LoginBtn onClick={()=>{
-                    navigate('.././')
-                }}>로그인</LoginBtn>
-                    <LoginBtn onClick={()=>{
-                    navigate('.././findID')
-                }}>비밀번호 찾기</LoginBtn>
-                </LoginDiv>
-            </Background>
-            <Lowerbar></Lowerbar>
-        </div>
-    )
-}
-
-export default LoginPage;

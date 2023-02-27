@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import Bg from '../img/seoul.jpeg';
 import recaptcha from '../img/recaptcha.gif'
+
+//import { authentication } from '../utils/firebase-config';
+//import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
 
-import { login, signup } from '../redux/actions/actionCreator'
+import { signup } from '../redux/actions/actionCreator'
 
 function SignupPage(props){
     let navigate = useNavigate()
@@ -14,8 +17,6 @@ function SignupPage(props){
     let [kategorie, setKategorie] = useState([
         '분위기 좋은 음식점', '소개팅 성공 98% 음식점', '숙성 소고기', '유튜버 추천 맛집', '가성비 와인바','I끼리 만날 때 가는 술집', '저렴한 칵테일', '데이트 할 때 가는 술집','겨울엔 대방어','여기에 붕어빵','서울에도 이런 포장마차 있지','대화하기 좋은 술집','이색 맛집','디저트가 맛있는 카페','신나고 싶을 때 가는 술집','빵순이 빵돌이 모여라','밖에서 맥주마시기 좋은 곳','카공하기 좋은 카페','여의도 점심식사','연희동 뜨는 맛집','차 한잔 하기 좋은 곳','대학생들이 편하게 가는 술집','망원동 라멘 맛집','에스프레소 먹고 싶을  때','이태원에서 꼭 가야 하는 곳','디카페인 카페' ,'연희동 맛집', '안암 맛집','신촌 맛집','홍대 맛집','연남동 핫플','성수동 핫플','건대 중국집','가지튀김 좋아하면 가야하는 곳','홍콩 음식점','딤섬 맛있는 곳','서울 꼭 가봐야 하는 만두'
     ])
-    const [passwordValue1, setPasswordValue1] = useState("");
-    const [passwordValue2, setPasswordValue2] = useState("");
     const dispatch = useDispatch();
 
     const [name, setName] = useState("");
@@ -77,7 +78,6 @@ function SignupPage(props){
         dispatch(signup(body))
         .then(response => {
             if(response.payload.success){
-                console.log(response)
                 alert("회원가입이 완료되었습니다.")
                 props.history.push('/login')
             } else {
@@ -85,6 +85,32 @@ function SignupPage(props){
             }
         })
     }
+    /*
+    const generateRecaptcha = () => {
+        window.recaptchaVerifier = new RecaptchaVerifier('auth_btn', {
+            'size': 'invisible',
+        }, authentication);
+    }
+
+    const authOTP = (phoneNumber, e) => {
+        e.preventDefault();
+        
+        let countryCode = "+82";
+        phoneNumber = countryCode + phoneNumber;
+
+        if(phoneNumber.length >= 14){
+            generateRecaptcha();
+            let appVerifier = window.recaptchaVerifier;
+            signInWithPhoneNumber(authentication, phoneNumber, appVerifier)
+            .then(confirmationResult => {   
+                window.confirmationResult = confirmationResult;
+            }).catch((error) => {
+                console.log(error);
+            })
+        }
+        
+    }
+    */
 
     return (
         <div>
@@ -115,8 +141,9 @@ function SignupPage(props){
                                 <InputDiv>
                                     <InputBox><p className='inputId'>전화번호</p>
                                     </InputBox>
-                                    <InputPhone placeholder='Phone number' value={phonenum} onChange={onPhoneNumberHandler}></InputPhone>
-                                    <PhoneBtn>인증</PhoneBtn>
+                                <InputPhone placeholder='Phone number' value={phonenum} onChange={onPhoneNumberHandler}></InputPhone>
+                                <PhoneBtn id='auth_btn' type="submit">인증</PhoneBtn>
+
                                 </InputDiv>
                                     <InputBox><p className='inputId'>이메일</p></InputBox>
                                     <Input placeholder='E-mail' type={"email"} value={email} onChange={onEmailHandler}></Input>
@@ -128,19 +155,13 @@ function SignupPage(props){
                                 <InputBox><p className='inputId'>닉네임</p></InputBox>
                                 <Input placeholder='Nickname' value={nickname} onChange={onNicknameHandler}></Input>
                                 <InputBox><p className='inputPassword'>비밀번호</p></InputBox>
-                            <Input placeholder='Passwords' type={"password"} onChange={(e)=>{
-                                setPasswordValue1(e.target.value)
-                                console.log(passwordValue1)
-                                }}></Input>
+                            <Input placeholder='Passwords' type={"password"} onChange={onPasswordHandler}></Input>
                             <InputDiv>
                                 <InputBox><p className='inputId'>비밀번호 확인</p>
                                 </InputBox>
-                                <InputPhone placeholder='Password Confirm' type={"password"} onChange={(e)=>{
-                                    setPasswordValue2(e.target.value)
-                                    console.log(passwordValue2)
-                                }}></InputPhone>
+                                <InputPhone placeholder='Password Confirm' type={"password"} onChange={onConfirmPasswordHandler}></InputPhone>
                                 {
-                                    passwordValue1 !== passwordValue2 || passwordValue1 === "" ? 
+                                    password !== confirmPassword || password === "" ? 
                                     <PasswordBtnX>X</PasswordBtnX> :  <PasswordBtnO>O</PasswordBtnO>
                                 }
                             </InputDiv>
@@ -175,7 +196,12 @@ function SignupPage(props){
                     </Signupdiv2> 
                 }
             </Background>
-            <Lowerbar></Lowerbar>
+            <Lowerbar>
+                <small>This site is protected by reCAPTCHA and the Google 
+                <a href="https://policies.google.com/privacy"> Privacy Policy</a> and
+                <a href="https://policies.google.com/terms"> Terms of Service</a> apply.
+                </small>
+            </Lowerbar>
         </div>
     )
 }
@@ -193,6 +219,17 @@ let Lowerbar = styled.div`
     height : 10vh;
     background-color : black;
     display : flex;
+    position: relative;
+
+    small {
+        position: absolute;
+        font-size : 0.5em;
+        color: gray;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
 `
 let Upperbardiv = styled.div`
     color : white;
@@ -252,7 +289,7 @@ let Signupdiv = styled.div`
     }
   `
 
-let Container = styled.div`
+let Container = styled.form`
     background-color : transparent;
     width : auto;
     height : auto;
@@ -377,12 +414,12 @@ let InputPhone = styled.input`
     }
 `
 let PhoneBtn = styled.button`
-    width : 30px;
-    height : 20px;
+    width : 2rem;
+    height : 1.5rem;
     padding : 0px;
     background : transparent;
     border : 0.7px solid white;
-    font-size : 5px;
+    font-size : 10px;
     float : right;
     position : relative;
     margin-top : 30px;
