@@ -2,12 +2,15 @@ import styled from 'styled-components';
 import Bg from '../img/Seoul_mainPage0.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '../redux/actions/actionCreator'
 
-
-function LoginPage(){
+function LoginPage(props){
     let navigate = useNavigate()
+
     const [ID, setID] = useState("");
     const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
 
     const onIDHandler = (e) =>{
         setID(e.target.value);
@@ -17,9 +20,23 @@ function LoginPage(){
         setPassword(e.target.value);
     }
 
-    let body = {
-        id: ID,
-        password: password
+    const onSubmitHandler = (e) => {
+        e.preventDefault(); 
+
+        let body = {
+            id: ID,
+            password: password
+        }
+
+        dispatch(login(body))
+        .then(response => {
+            if(response.payload.loginSuccess){
+                alert("로그인에 성공했습니다.")
+                props.history.push('/');
+            } else {
+                alert("로그인에 실패했습니다. 아이디와 비밀번호를 다시 확인해주세요.");
+            }
+        })
     }
 
     return (
@@ -50,13 +67,8 @@ function LoginPage(){
                         </form>
                     </Wrapper>
                     
-                    <LoginBtn onClick={()=>{
-                    
-                    navigate('.././')
-                }}>로그인</LoginBtn>
-                    <LoginBtn onClick={()=>{
-                    navigate('.././findID')
-                }}>비밀번호 찾기</LoginBtn>
+                    <LoginBtn onClick={onSubmitHandler}>로그인</LoginBtn>
+                    <LoginBtn onClick={()=>{navigate('.././findID')}}>비밀번호 찾기</LoginBtn>
                 </LoginDiv>
             </Background>
             <Lowerbar></Lowerbar>
