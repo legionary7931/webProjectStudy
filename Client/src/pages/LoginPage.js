@@ -32,7 +32,7 @@ function LoginPage(props){
         .then(response => {
             if(response.payload.loginSuccess){
                 alert("로그인에 성공했습니다.")
-                props.history.push('/');
+                navigate('/');
             } else {
                 alert("로그인에 실패했습니다. 아이디와 비밀번호를 다시 확인해주세요.");
             }
