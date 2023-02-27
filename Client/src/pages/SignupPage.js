@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Bg from '../img/seoul.jpeg';
 import recaptcha from '../img/recaptcha.gif'
 
-import { authentication } from '../utils/firebase-config';
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+//import { authentication } from '../utils/firebase-config';
+//import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -86,7 +86,7 @@ function SignupPage(props){
             }
         })
     }
-
+    /*
     const generateRecaptcha = () => {
         window.recaptchaVerifier = new RecaptchaVerifier('auth_btn', {
             'size': 'invisible',
@@ -111,6 +111,7 @@ function SignupPage(props){
         }
         
     }
+    */
 
     return (
         <div>
@@ -142,7 +143,7 @@ function SignupPage(props){
                                     <InputBox><p className='inputId'>전화번호</p>
                                     </InputBox>
                                 <InputPhone placeholder='Phone number' value={phonenum} onChange={onPhoneNumberHandler}></InputPhone>
-                                <PhoneBtn id='auth_btn' onClick={(e) => {authOTP(phonenum, e)}} type="submit">인증</PhoneBtn>
+                                <PhoneBtn id='auth_btn' type="submit">인증</PhoneBtn>
 
                                 </InputDiv>
                                     <InputBox><p className='inputId'>이메일</p></InputBox>

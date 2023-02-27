@@ -17,6 +17,11 @@ function LoginPage(){
         setPassword(e.target.value);
     }
 
+    let body = {
+        id: ID,
+        password: password
+    }
+
     return (
         <div>
             <Upperbar>
@@ -46,6 +51,7 @@ function LoginPage(){
                     </Wrapper>
                     
                     <LoginBtn onClick={()=>{
+                    
                     navigate('.././')
                 }}>로그인</LoginBtn>
                     <LoginBtn onClick={()=>{
