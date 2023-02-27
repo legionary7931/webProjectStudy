@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
+
 import GlobalStyle from './utils/GlobalStyleReset';
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
