@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { login, signup } from '../redux/actions/actionCreator'
+import { signup } from '../redux/actions/actionCreator'
 
 function SignupPage(props){
     let navigate = useNavigate()
@@ -141,8 +141,9 @@ function SignupPage(props){
                                 <InputDiv>
                                     <InputBox><p className='inputId'>전화번호</p>
                                     </InputBox>
-                                    <InputPhone placeholder='Phone number' value={phonenum} onChange={onPhoneNumberHandler}></InputPhone>
-                                    <PhoneBtn id='auth_btn' onClick={(e) => {authOTP(phonenum, e)}} type="submit">인증</PhoneBtn>
+                                <InputPhone placeholder='Phone number' value={phonenum} onChange={onPhoneNumberHandler}></InputPhone>
+                                <PhoneBtn id='auth_btn' onClick={(e) => {authOTP(phonenum, e)}} type="submit">인증</PhoneBtn>
+
                                 </InputDiv>
                                     <InputBox><p className='inputId'>이메일</p></InputBox>
                                     <Input placeholder='E-mail' type={"email"} value={email} onChange={onEmailHandler}></Input>
@@ -359,7 +360,7 @@ let Wrapper = styled.div`
     }
   `
   let Recaptcha = styled.button`
-    width : 250px;래
+    width : 250px;
     height : 60px;
     background : url(${recaptcha});
     bakcground-size : cover;
@@ -413,12 +414,12 @@ let InputPhone = styled.input`
     }
 `
 let PhoneBtn = styled.button`
-    width : 30px;
-    height : 20px;
+    width : 2rem;
+    height : 1.5rem;
     padding : 0px;
     background : transparent;
     border : 0.7px solid white;
-    font-size : 5px;
+    font-size : 10px;
     float : right;
     position : relative;
     margin-top : 30px;

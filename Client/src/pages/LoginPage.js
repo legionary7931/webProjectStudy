@@ -1,6 +1,64 @@
 import styled from 'styled-components';
 import Bg from '../img/Seoul_mainPage0.jpg';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+
+function LoginPage(){
+    let navigate = useNavigate()
+    const [ID, setID] = useState("");
+    const [password, setPassword] = useState("");
+
+    const onIDHandler = (e) =>{
+        setID(e.target.value);
+    }
+
+    const onPasswordHandler = (e) =>{
+        setPassword(e.target.value);
+    }
+
+    return (
+        <div>
+            <Upperbar>
+                <Upperbardiv onClick={()=>{
+                    navigate('/')
+                }}><h1>Logo Design</h1></Upperbardiv>
+                <Flexgrow></Flexgrow>
+                <Upperbardiv onClick={()=>{
+                    navigate('/login')
+                }}><h3>로그인</h3></Upperbardiv>
+                <Upperbardiv onClick={()=>{
+                    navigate('/signup')
+                }}><h3>회원가입</h3></Upperbardiv>
+            </Upperbar>
+            {/* <Backgroundcover> */}
+            <Background>
+                <LoginDiv>
+                    <h3 style={{margin : 'auto'}}>LOGO DESIGN</h3>
+                    <Wrapper>
+                        <form action="~~">
+                            <InputBox><p className='inputId'>아이디</p></InputBox>
+                            <Input placeholder='ID' value={ID} onChange={onIDHandler}></Input>
+                            <p></p>
+                            <InputBox><p className='inputPassword'>비밀번호</p></InputBox>
+                            <Input placeholder='Passwords' type={"password"} value={password} onChange={onPasswordHandler}></Input>
+                        </form>
+                    </Wrapper>
+                    
+                    <LoginBtn onClick={()=>{
+                    navigate('.././')
+                }}>로그인</LoginBtn>
+                    <LoginBtn onClick={()=>{
+                    navigate('.././findID')
+                }}>비밀번호 찾기</LoginBtn>
+                </LoginDiv>
+            </Background>
+            <Lowerbar></Lowerbar>
+        </div>
+    )
+}
+
+export default LoginPage;
 
 let Upperbar = styled.div`
     width : 100%;
@@ -118,48 +176,3 @@ let InputBox = styled.div`
     text-align : left;
     transition : all 0.5s;
 `
-function LoginPage(){
-    let navigate = useNavigate()
-
-    return (
-        <div>
-            <Upperbar>
-                <Upperbardiv onClick={()=>{
-                    navigate('/')
-                }}><h1>Logo Design</h1></Upperbardiv>
-                <Flexgrow></Flexgrow>
-                <Upperbardiv onClick={()=>{
-                    navigate('/login')
-                }}><h3>로그인</h3></Upperbardiv>
-                <Upperbardiv onClick={()=>{
-                    navigate('/signup')
-                }}><h3>회원가입</h3></Upperbardiv>
-            </Upperbar>
-            {/* <Backgroundcover> */}
-            <Background>
-                <LoginDiv>
-                    <h3 style={{margin : 'auto'}}>LOGO DESIGN</h3>
-                    <Wrapper>
-                        <form action="~~">
-                            <InputBox><p className='inputId'>아이디</p></InputBox>
-                            <Input placeholder='ID'></Input>
-                            <p></p>
-                            <InputBox><p className='inputPassword'>비밀번호</p></InputBox>
-                            <Input placeholder='Passwords' type={"password"}></Input>
-                        </form>
-                    </Wrapper>
-                    
-                    <LoginBtn onClick={()=>{
-                    navigate('.././')
-                }}>로그인</LoginBtn>
-                    <LoginBtn onClick={()=>{
-                    navigate('.././findID')
-                }}>비밀번호 찾기</LoginBtn>
-                </LoginDiv>
-            </Background>
-            <Lowerbar></Lowerbar>
-        </div>
-    )
-}
-
-export default LoginPage;
