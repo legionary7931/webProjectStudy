@@ -5,6 +5,7 @@ const port = 8000;
 const bodyParser = require("body-parser"); //bodyparser 다운받기
 const cookieParser = require('cookie-parser');
 const {User} = require("./models/User");
+const {auth} = require('./middleware/auth');
 const cors = require("cors");
 const dev = require("./config/dev");
 
@@ -56,6 +57,31 @@ app.post('/login', (req, res) => {
         })
     })
 })
+
+app.get('/auth', auth, (req,res) => {
+    res.status(200).json({
+      _id:req.user._id,
+      isAdmin:req.user.role === 0 ? false:true,
+      isAuth:true,
+      id:req.user.id,
+      email:req.user.email,
+      name:req.user.name,
+      birthday:req.user.birthday,
+      nickname:req.user.nickname,
+      phonenumber:req.user.phonenumber
+    })
+  })
+
+app.get('/logout', auth, (req,res) => {
+    User.findOneAndUpdate({_id:req.user._id},
+      {token:""}
+      ,(err,user) => {
+        if (err) return res.json({success:false,err});
+        return res.status(200).send({
+          success:true
+        })
+      })
+  })
 
 
 app.listen(port, () => console.log("listening on port " + port))
