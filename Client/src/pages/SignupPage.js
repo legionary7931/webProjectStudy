@@ -77,9 +77,9 @@ function SignupPage(props){
 
         dispatch(signup(body))
         .then(response => {
-            if(response.payload.success){
+            if(response.payload.signupSuccess){
                 alert("회원가입이 완료되었습니다.")
-                props.history.push('/login')
+                navigate('/login')
             } else {
                 alert('회원가입에 실패하였습니다.')
             }
