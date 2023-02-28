@@ -24,9 +24,9 @@ app.post('/signup', (req, res) => {
     console.log(user)
 
     user.save((err, doc) => {
-        if(err) return res.json({success : false, err})
+        if(err) return res.json({signupSuccess : false, err})
         return res.status(200).json({
-            success : true
+            signupSuccess : true
         })
     })
 })
@@ -73,12 +73,13 @@ app.get('/auth', auth, (req,res) => {
   })
 
 app.get('/logout', auth, (req,res) => {
+    console.log("a")
     User.findOneAndUpdate({_id:req.user._id},
       {token:""}
       ,(err,user) => {
-        if (err) return res.json({success:false,err});
+        if (err) return res.json({logoutSuccess:false,err});
         return res.status(200).send({
-          success:true
+          logoutSuccess:true
         })
       })
   })
