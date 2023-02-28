@@ -6,12 +6,13 @@ function MapPage() {
     const onClickHandler = () => {
         Axios.get('/logout')
         .then(response => {
-            if (response.data.logoutSuccess) {
+            //console.log(response.data)
+            if (response.data.success) {
                 navigate('/login');
+                alert('로그아웃하셨습니다.');
             } else {
-                alert('로그아웃에 실패');
+                alert('로그아웃 실패');
             }
-            
         })
     }
     return (

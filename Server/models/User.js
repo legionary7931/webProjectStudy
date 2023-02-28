@@ -72,16 +72,16 @@ userSchema.statics.findByToken = function(token, cb) {
 
     jwt.verify(token, 'secretToken', function(err, decoded) {
         //id를 이용해 user를 찾고 client의 token과 db에 저장된 token이 같은지 확인하기
-        user.findOne({"_id": decoded, "token": token}, function(err, user) {
+        user.findOne({ "token": token}, function(err, user) {
             if(err) return cb(err);
             cb(null, user)
         })
     })
 }
 userSchema.methods.generateToken = function(cb){
-    var user = this;
+    const user = this;
     // token 생성하기
-    var token = jwt.sign(user._id.toHexString(),'secretToken')
+    const token = jwt.sign(user._id.toHexString(),'secretToken')
     user.token = token
     user.save(function(err, user){
         if(err) return cb(err)

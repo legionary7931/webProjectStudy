@@ -4,8 +4,8 @@ import Axios from '../../utils/Axios'
 import * as types from './actionType';
 
 
-export function login(data) {
-  const request = Axios.post('/login', data)
+export function login(dataToSubmit) {
+  const request = Axios.post('/login', dataToSubmit)
                     .then(response => response.data)
   return {
     type: types.LOGIN,

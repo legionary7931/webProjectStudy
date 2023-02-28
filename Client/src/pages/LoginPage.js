@@ -9,7 +9,7 @@ function LoginPage(props){
     let navigate = useNavigate()
 
     const [ID, setID] = useState("");
-    const [password, setPassword] = useState("");
+    const [Password, setPassword] = useState("");
     const dispatch = useDispatch();
 
     const onIDHandler = (e) =>{
@@ -25,14 +25,15 @@ function LoginPage(props){
 
         let body = {
             id: ID,
-            password: password
+            password: Password
         }
-
+        
         dispatch(login(body))
         .then(response => {
             if(response.payload.loginSuccess){
                 alert("로그인에 성공했습니다.")
                 navigate('/MapPage');
+                console.log(ID)
             } else {
                 alert("로그인에 실패했습니다. 아이디와 비밀번호를 다시 확인해주세요.");
             }
@@ -63,7 +64,7 @@ function LoginPage(props){
                             <Input placeholder='ID' value={ID} onChange={onIDHandler}></Input>
                             <p></p>
                             <InputBox><p className='inputPassword'>비밀번호</p></InputBox>
-                            <Input placeholder='Passwords' type={"password"} value={password} onChange={onPasswordHandler}></Input>
+                            <Input placeholder='Passwords' type={"password"} value={Password} onChange={onPasswordHandler}></Input>
                         </form>
                     </Wrapper>
                     
