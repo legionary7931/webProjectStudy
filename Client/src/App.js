@@ -8,6 +8,7 @@ import FindIDPage from './pages/FindIDPage';
 import SignupPage from './pages/SignupPage';
 import UserProfile from './pages/UserProfile';
 import Modify from './pages/Modify.js'
+import MapPage from './pages/MapPage';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/MapPage" element={<MapPage/>}/>
+
         <Route path="/findID" element={<FindIDPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
         <Route path="/userprofile" element={<UserProfile/>}></Route>
