@@ -13,8 +13,8 @@ export function login(dataToSubmit) {
   };
 }
 
-export function signup(data){
-  const request = Axios.post('/signup', data)
+export function signup(dataToSubmit){
+  const request = Axios.post('/signup', dataToSubmit)
                     .then(response => response.data)
 
   return {
