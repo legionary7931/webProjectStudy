@@ -22,3 +22,4 @@ export function signup(data){
     payload: request
   };
 }
+
